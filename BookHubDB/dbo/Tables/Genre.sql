@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[Genre]
+(
+		GenreID int NOT NULL,
+	Name varchar(255) NOT NULL,
+  CONSTRAINT [PK_GENRE] PRIMARY KEY CLUSTERED
+  (
+  [GenreID] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)

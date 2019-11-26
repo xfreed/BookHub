@@ -3,38 +3,42 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - BookHub</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/c8672ac77d.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div>
+        <nav class="navbar navbar-default navigation-clean">
+            <div class="container">
+                <a class="navbar-brand" href="#">BookHub</a>
+                <div class="navbar-header"><a href="#"><img src="~/Content/Images/logo.png" style="width: 40px;margin-top: 5px;" /></a></div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li role="presentation"><a href="#"><i class="fas fa-chart-bar"></i>Популярне</a></li>
+                        <li role="presentation"><a href="#"><i class="fas fa-book"></i>Книжки</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav" style="float: right;">
+                        <li role="presentation"><a href="#"><i class="fas fa-search" data-toggle="tooltip" data-placement="bottom" title="Пошука за назвою"></i></a></li>
+                        <li role="presentation"><a href="#"><i class="fas fa-sign-in-alt"></i></a></li>
+                        <li role="presentation"></li>
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
+        </nav>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div class="container-fluid">
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
 
+    <footer class="border-top footer text-muted">
+        &copy; 2019 - BookHub - Create by Michael Kunynets
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

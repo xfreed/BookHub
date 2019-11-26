@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[ReadStatus]
+(
+	ReadStatusID int NOT NULL,
+	Name varchar(255) NOT NULL,
+  CONSTRAINT [PK_READSTATUS] PRIMARY KEY CLUSTERED
+  (
+  [ReadStatusID] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+)

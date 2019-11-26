@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="6edcc4e9-19b8-4620-a1bc-b44c56422b0c" ChangeDateTime="11/25/2019 22:27:51">
+    <Property Name="ElementName" Value="[dbo].[Genre].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Genre]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AuthorID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a0cdab01-9c8f-4b7c-9718-7b8e4965ad66" ChangeDateTime="11/25/2019 22:35:29">
+    <Property Name="ElementName" Value="[dbo].[FK_Author_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Author]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[CountryID]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e9afdde4-5b96-4115-b46f-46bbeab75397" ChangeDateTime="11/25/2019 22:53:29">
+    <Property Name="ElementName" Value="[dbo].[FK_Book_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Book]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Book_Genre]" />
+  </Operation>
+</Operations>
