@@ -17,8 +17,8 @@ namespace BookHub.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Book()
         {
-            this.UserBook = new HashSet<UserBook>();
-            this.UserFavoriteBooks = new HashSet<UserFavoriteBooks>();
+            this.UserBooks = new HashSet<UserBook>();
+            this.UserFavoriteBooks = new HashSet<UserFavoriteBook>();
         }
     
         public int BookID { get; set; }
@@ -32,10 +32,10 @@ namespace BookHub.Models
     
         public virtual Country Country { get; set; }
         public virtual Genre Genre { get; set; }
-        public virtual TranslateStatus TranslateStatus { get; set; }
+        public virtual TranslateStatu TranslateStatu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserBook> UserBook { get; set; }
+        public virtual ICollection<UserBook> UserBooks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFavoriteBooks> UserFavoriteBooks { get; set; }
+        public virtual ICollection<UserFavoriteBook> UserFavoriteBooks { get; set; }
     }
 }

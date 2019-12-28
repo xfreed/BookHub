@@ -12,18 +12,18 @@ namespace BookHub.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ReadStatus
+    public partial class TranslateStatu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ReadStatus()
+        public TranslateStatu()
         {
-            this.UserBook = new HashSet<UserBook>();
+            this.Books = new HashSet<Book>();
         }
     
-        public int ReadStatusID { get; set; }
+        public int TranslateStatusID { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserBook> UserBook { get; set; }
+        public virtual ICollection<Book> Books { get; set; }
     }
 }

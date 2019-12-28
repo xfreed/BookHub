@@ -17,8 +17,8 @@ namespace BookHub.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Country()
         {
-            this.Author = new HashSet<Author>();
-            this.Book = new HashSet<Book>();
+            this.Authors = new HashSet<Author>();
+            this.Books = new HashSet<Book>();
         }
     
         public int CountryID { get; set; }
@@ -27,8 +27,8 @@ namespace BookHub.Models
         public string Icon { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Author> Author { get; set; }
+        public virtual ICollection<Author> Authors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Book> Book { get; set; }
+        public virtual ICollection<Book> Books { get; set; }
     }
 }

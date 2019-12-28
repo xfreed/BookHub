@@ -7,6 +7,7 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     background-color: #f2f2f2f2;
+    height: 120rem;
 }
 
 .footer {
@@ -15,12 +16,16 @@ body {
     width: 100%;
     padding-left: 50px;
     white-space: nowrap;
-    line-height: 30px; /* Vertically center the text there */
+    line-height: 30px;
+    /* Vertically center the text there */
 }
 
 /* Manual edited*/
+
 /* Main page */
-#logo, #logo * {
+
+#logo,
+#logo * {
     height: 45px;
     width: 45px;
     margin-left: 10%;
@@ -32,18 +37,19 @@ body {
 
 .navbar {
     background-color: #fff;
-    -webkit-box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.42);
-    -moz-box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.42);
-    box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.42);
+    -webkit-box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.42);
+    -moz-box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.42);
     z-index: 2;
-    margin-bottom:0px;
+    margin-bottom: 0px;
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: rgb(0,0,0);
+    color: rgb(0, 0, 0);
 }
 
-.fas.fa-chart-bar, .fas.fa-book {
+.fas.fa-chart-bar,
+.fas.fa-book {
     margin-right: 5px;
 }
 
@@ -57,11 +63,10 @@ body {
     color: #fff;
     height: 300px;
     overflow: hidden;
-    background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),url("Images/main/background.jpg");
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("Images/main/background.jpg");
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: scroll;
     pointer-events: none;
 }
 
@@ -74,7 +79,7 @@ body {
 }
 
     .hello-block__text h1 {
-        font-size: 1.8em;
+        font-size: 2em;
     }
 
     .hello-block__text h2 {
@@ -86,3 +91,75 @@ body {
 #second-ul {
     margin-left: 40%;
 }
+
+/*Carusel*/
+
+.MultiCarousel {
+    float: left;
+    overflow: hidden;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+}
+
+    .MultiCarousel .MultiCarousel-inner {
+        transition: 1s ease all;
+        float: left;
+    }
+
+        .MultiCarousel .MultiCarousel-inner .item {
+            float: left;
+        }
+
+            .MultiCarousel .MultiCarousel-inner .item > div {
+                text-align: center;
+                padding: 10px;
+                margin: 10px;
+                background: #f1f1f1;
+                color: #666;
+            }
+
+    .MultiCarousel .leftLst,
+    .MultiCarousel .rightLst {
+        position: absolute;
+        border-radius: 50%;
+        top: calc(50% - 20px);
+    }
+
+    .MultiCarousel .leftLst {
+        left: 0;
+    }
+
+    .MultiCarousel .rightLst {
+        right: 0;
+    }
+
+        .MultiCarousel .leftLst.over,
+        .MultiCarousel .rightLst.over {
+            pointer-events: none;
+            background: #ccc;
+        }
+
+/*END Carusel*/
+
+/*Login*/
+
+.login-clean {
+    padding: 120px 0;
+}
+
+.login-clean form {
+        max-width: 320px;
+        width: 90%;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 4px;
+        color: #505e6c;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+    .login-clean .illustration {
+        text-align: center;
+        padding: 0 0 20px;
+    }

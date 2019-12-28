@@ -1,8 +1,6 @@
 ﻿CREATE TABLE [dbo].[User]
 (
 	UserID int NOT NULL,
-	FirstName varchar(50) NOT NULL,
-	LastName varchar(50) NOT NULL,
 	Username varchar(50) NOT NULL UNIQUE,
 	Email varchar(50) NOT NULL UNIQUE,
 	Password varchar(50) NOT NULL,

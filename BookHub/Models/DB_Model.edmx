@@ -68,13 +68,13 @@
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Icon" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Icon" Type="varchar" MaxLength="255" />
+          <Property Name="IsEmailVerified" Type="bit" />
+          <Property Name="ActivationCode" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="UserBook">
           <Key>
@@ -285,8 +285,8 @@
           <Property Name="TranslateStatusID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Book_Country" FromRole="Book" ToRole="Country" />
           <NavigationProperty Name="Genre" Relationship="Self.FK_Book_Genre" FromRole="Book" ToRole="Genre" />
-          <NavigationProperty Name="TranslateStatus" Relationship="Self.FK_Book_TranslateStatus" FromRole="Book" ToRole="TranslateStatus" />
-          <NavigationProperty Name="UserBook" Relationship="Self.FK_UserBook_Book" FromRole="Book" ToRole="UserBook" />
+          <NavigationProperty Name="TranslateStatu" Relationship="Self.FK_Book_TranslateStatus" FromRole="Book" ToRole="TranslateStatus" />
+          <NavigationProperty Name="UserBooks" Relationship="Self.FK_UserBook_Book" FromRole="Book" ToRole="UserBook" />
           <NavigationProperty Name="UserFavoriteBooks" Relationship="Self.FK_UserFavoriteBooks_Book" FromRole="Book" ToRole="UserFavoriteBooks" />
         </EntityType>
         <EntityType Name="Country">
@@ -297,8 +297,8 @@
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ShortName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Icon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Author" Relationship="Self.FK_Author_Country" FromRole="Country" ToRole="Author" />
-          <NavigationProperty Name="Book" Relationship="Self.FK_Book_Country" FromRole="Country" ToRole="Book" />
+          <NavigationProperty Name="Authors" Relationship="Self.FK_Author_Country" FromRole="Country" ToRole="Author" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Book_Country" FromRole="Country" ToRole="Book" />
         </EntityType>
         <EntityType Name="Genre">
           <Key>
@@ -306,36 +306,36 @@
           </Key>
           <Property Name="GenreID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Book" Relationship="Self.FK_Book_Genre" FromRole="Genre" ToRole="Book" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Book_Genre" FromRole="Genre" ToRole="Book" />
         </EntityType>
-        <EntityType Name="ReadStatus">
+        <EntityType Name="ReadStatu">
           <Key>
             <PropertyRef Name="ReadStatusID" />
           </Key>
           <Property Name="ReadStatusID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="UserBook" Relationship="Self.FK_UserBook_ReadStatus" FromRole="ReadStatus" ToRole="UserBook" />
+          <NavigationProperty Name="UserBooks" Relationship="Self.FK_UserBook_ReadStatus" FromRole="ReadStatus" ToRole="UserBook" />
         </EntityType>
-        <EntityType Name="TranslateStatus">
+        <EntityType Name="TranslateStatu">
           <Key>
             <PropertyRef Name="TranslateStatusID" />
           </Key>
           <Property Name="TranslateStatusID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Book" Relationship="Self.FK_Book_TranslateStatus" FromRole="TranslateStatus" ToRole="Book" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Book_TranslateStatus" FromRole="TranslateStatus" ToRole="Book" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Icon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="UserBook" Relationship="Self.FK_UserBook_User" FromRole="User" ToRole="UserBook" />
+          <Property Name="Icon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsEmailVerified" Type="Boolean" />
+          <Property Name="ActivationCode" Type="Guid" />
+          <NavigationProperty Name="UserBooks" Relationship="Self.FK_UserBook_User" FromRole="User" ToRole="UserBook" />
           <NavigationProperty Name="UserFavoriteBooks" Relationship="Self.FK_UserFavoriteBooks_User" FromRole="User" ToRole="UserFavoriteBooks" />
         </EntityType>
         <EntityType Name="UserBook">
@@ -347,10 +347,10 @@
           <Property Name="BookID" Type="Int32" Nullable="false" />
           <Property Name="ReadStatusID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Book" Relationship="Self.FK_UserBook_Book" FromRole="UserBook" ToRole="Book" />
-          <NavigationProperty Name="ReadStatus" Relationship="Self.FK_UserBook_ReadStatus" FromRole="UserBook" ToRole="ReadStatus" />
+          <NavigationProperty Name="ReadStatu" Relationship="Self.FK_UserBook_ReadStatus" FromRole="UserBook" ToRole="ReadStatus" />
           <NavigationProperty Name="User" Relationship="Self.FK_UserBook_User" FromRole="UserBook" ToRole="User" />
         </EntityType>
-        <EntityType Name="UserFavoriteBooks">
+        <EntityType Name="UserFavoriteBook">
           <Key>
             <PropertyRef Name="UserFavoriteBooksID" />
           </Key>
@@ -397,7 +397,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Book_TranslateStatus">
-          <End Role="TranslateStatus" Type="Self.TranslateStatus" Multiplicity="1" />
+          <End Role="TranslateStatus" Type="Self.TranslateStatu" Multiplicity="1" />
           <End Role="Book" Type="Self.Book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TranslateStatus">
@@ -422,7 +422,7 @@
         </Association>
         <Association Name="FK_UserFavoriteBooks_Book">
           <End Role="Book" Type="Self.Book" Multiplicity="1" />
-          <End Role="UserFavoriteBooks" Type="Self.UserFavoriteBooks" Multiplicity="*" />
+          <End Role="UserFavoriteBooks" Type="Self.UserFavoriteBook" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Book">
               <PropertyRef Name="BookID" />
@@ -433,7 +433,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserBook_ReadStatus">
-          <End Role="ReadStatus" Type="Self.ReadStatus" Multiplicity="1" />
+          <End Role="ReadStatus" Type="Self.ReadStatu" Multiplicity="1" />
           <End Role="UserBook" Type="Self.UserBook" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ReadStatus">
@@ -458,7 +458,7 @@
         </Association>
         <Association Name="FK_UserFavoriteBooks_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserFavoriteBooks" Type="Self.UserFavoriteBooks" Multiplicity="*" />
+          <End Role="UserFavoriteBooks" Type="Self.UserFavoriteBook" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -468,51 +468,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BookHubDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
-          <EntitySet Name="Author" EntityType="Self.Author" />
-          <EntitySet Name="Book" EntityType="Self.Book" />
-          <EntitySet Name="Country" EntityType="Self.Country" />
-          <EntitySet Name="Genre" EntityType="Self.Genre" />
-          <EntitySet Name="ReadStatus" EntityType="Self.ReadStatus" />
-          <EntitySet Name="TranslateStatus" EntityType="Self.TranslateStatus" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="UserBook" EntityType="Self.UserBook" />
-          <EntitySet Name="UserFavoriteBooks" EntityType="Self.UserFavoriteBooks" />
+          <EntitySet Name="Authors" EntityType="Self.Author" />
+          <EntitySet Name="Books" EntityType="Self.Book" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Genres" EntityType="Self.Genre" />
+          <EntitySet Name="ReadStatus" EntityType="Self.ReadStatu" />
+          <EntitySet Name="TranslateStatus" EntityType="Self.TranslateStatu" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserBooks" EntityType="Self.UserBook" />
+          <EntitySet Name="UserFavoriteBooks" EntityType="Self.UserFavoriteBook" />
           <AssociationSet Name="FK_Author_Country" Association="Self.FK_Author_Country">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="Author" EntitySet="Author" />
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Author" EntitySet="Authors" />
           </AssociationSet>
           <AssociationSet Name="FK_Book_Country" Association="Self.FK_Book_Country">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="Book" EntitySet="Book" />
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Book" EntitySet="Books" />
           </AssociationSet>
           <AssociationSet Name="FK_Book_Genre" Association="Self.FK_Book_Genre">
-            <End Role="Genre" EntitySet="Genre" />
-            <End Role="Book" EntitySet="Book" />
+            <End Role="Genre" EntitySet="Genres" />
+            <End Role="Book" EntitySet="Books" />
           </AssociationSet>
           <AssociationSet Name="FK_Book_TranslateStatus" Association="Self.FK_Book_TranslateStatus">
             <End Role="TranslateStatus" EntitySet="TranslateStatus" />
-            <End Role="Book" EntitySet="Book" />
+            <End Role="Book" EntitySet="Books" />
           </AssociationSet>
           <AssociationSet Name="FK_UserBook_Book" Association="Self.FK_UserBook_Book">
-            <End Role="Book" EntitySet="Book" />
-            <End Role="UserBook" EntitySet="UserBook" />
+            <End Role="Book" EntitySet="Books" />
+            <End Role="UserBook" EntitySet="UserBooks" />
           </AssociationSet>
           <AssociationSet Name="FK_UserFavoriteBooks_Book" Association="Self.FK_UserFavoriteBooks_Book">
-            <End Role="Book" EntitySet="Book" />
+            <End Role="Book" EntitySet="Books" />
             <End Role="UserFavoriteBooks" EntitySet="UserFavoriteBooks" />
           </AssociationSet>
           <AssociationSet Name="FK_UserBook_ReadStatus" Association="Self.FK_UserBook_ReadStatus">
             <End Role="ReadStatus" EntitySet="ReadStatus" />
-            <End Role="UserBook" EntitySet="UserBook" />
+            <End Role="UserBook" EntitySet="UserBooks" />
           </AssociationSet>
           <AssociationSet Name="FK_UserBook_User" Association="Self.FK_UserBook_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserBook" EntitySet="UserBook" />
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserBook" EntitySet="UserBooks" />
           </AssociationSet>
           <AssociationSet Name="FK_UserFavoriteBooks_User" Association="Self.FK_UserFavoriteBooks_User">
-            <End Role="User" EntitySet="User" />
+            <End Role="User" EntitySet="Users" />
             <End Role="UserFavoriteBooks" EntitySet="UserFavoriteBooks" />
           </AssociationSet>
         </EntityContainer>
@@ -521,7 +521,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BookHubDBModelStoreContainer" CdmEntityContainer="BookHubDBEntities">
+        <EntityContainerMapping StorageEntityContainer="BookHubDBModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="C__RefactorLog">
             <EntityTypeMapping TypeName="BookHubDBModel.C__RefactorLog">
               <MappingFragment StoreEntitySet="__RefactorLog">
@@ -529,7 +529,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Author">
+          <EntitySetMapping Name="Authors">
             <EntityTypeMapping TypeName="BookHubDBModel.Author">
               <MappingFragment StoreEntitySet="Author">
                 <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
@@ -540,7 +540,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Book">
+          <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="BookHubDBModel.Book">
               <MappingFragment StoreEntitySet="Book">
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
@@ -554,7 +554,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Country">
+          <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="BookHubDBModel.Country">
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
@@ -564,7 +564,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Genre">
+          <EntitySetMapping Name="Genres">
             <EntityTypeMapping TypeName="BookHubDBModel.Genre">
               <MappingFragment StoreEntitySet="Genre">
                 <ScalarProperty Name="GenreID" ColumnName="GenreID" />
@@ -573,7 +573,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ReadStatus">
-            <EntityTypeMapping TypeName="BookHubDBModel.ReadStatus">
+            <EntityTypeMapping TypeName="BookHubDBModel.ReadStatu">
               <MappingFragment StoreEntitySet="ReadStatus">
                 <ScalarProperty Name="ReadStatusID" ColumnName="ReadStatusID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -581,27 +581,27 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TranslateStatus">
-            <EntityTypeMapping TypeName="BookHubDBModel.TranslateStatus">
+            <EntityTypeMapping TypeName="BookHubDBModel.TranslateStatu">
               <MappingFragment StoreEntitySet="TranslateStatus">
                 <ScalarProperty Name="TranslateStatusID" ColumnName="TranslateStatusID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="User">
+          <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BookHubDBModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserBook">
+          <EntitySetMapping Name="UserBooks">
             <EntityTypeMapping TypeName="BookHubDBModel.UserBook">
               <MappingFragment StoreEntitySet="UserBook">
                 <ScalarProperty Name="UserBookID" ColumnName="UserBookID" />
@@ -612,7 +612,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserFavoriteBooks">
-            <EntityTypeMapping TypeName="BookHubDBModel.UserFavoriteBooks">
+            <EntityTypeMapping TypeName="BookHubDBModel.UserFavoriteBook">
               <MappingFragment StoreEntitySet="UserFavoriteBooks">
                 <ScalarProperty Name="UserFavoriteBooksID" ColumnName="UserFavoriteBooksID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -634,7 +634,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

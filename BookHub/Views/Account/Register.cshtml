@@ -1,0 +1,30 @@
+﻿@model BookHub.ViewModel.Register
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="login-clean">
+    @using (Html.BeginForm("SaveRegisterDetails", "Account"))
+    {
+    <form method="post">
+        <div style="color:red;">@Html.ValidationSummary()</div>
+        @*<div class="col-lg-12"></div>*@
+        @if (ViewBag.Success != null)
+        {
+            <div role="alert" class="alert alert-success"><span><strong>@ViewBag.Success</strong></span></div>
+
+        }
+        else if (ViewBag.Falen != null)
+        {
+            <div role="alert" class="alert alert-danger"><span><strong>@ViewBag.Falen</strong></span></div>
+
+        }
+        <div class="illustration"><img src="~/Content/Images/logo.png" style="width: 80px;" /></div>
+        <div class="form-group">@Html.TextBoxFor(a => a.Username, new { @class = "form-control", type = "text", placeholder = "Нік" })</div>
+        <div class="form-group">@Html.TextBoxFor(a => a.Email, new { @class = "form-control", type = "email", placeholder = "Почта" })</div>
+        <div class="form-group">@Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "password", placeholder = "Пароль" })</div>
+        <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Зареєструватися</button></div>
+        <span>Маєте вже аккаунт? <a class="forgot" href="@Url.Action("Login", "Account")">Вхід</a></span>
+    </form>
+    }
+</div>

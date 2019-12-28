@@ -26,14 +26,14 @@ namespace BookHub.Models
         }
     
         public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
-        public virtual DbSet<Author> Author { get; set; }
-        public virtual DbSet<Book> Book { get; set; }
-        public virtual DbSet<Country> Country { get; set; }
-        public virtual DbSet<Genre> Genre { get; set; }
-        public virtual DbSet<ReadStatus> ReadStatus { get; set; }
-        public virtual DbSet<TranslateStatus> TranslateStatus { get; set; }
-        public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<UserBook> UserBook { get; set; }
-        public virtual DbSet<UserFavoriteBooks> UserFavoriteBooks { get; set; }
+        public virtual DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Genre> Genres { get; set; }
+        public virtual DbSet<ReadStatu> ReadStatus { get; set; }
+        public virtual DbSet<TranslateStatu> TranslateStatus { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserBook> UserBooks { get; set; }
+        public virtual DbSet<UserFavoriteBook> UserFavoriteBooks { get; set; }
     }
 }

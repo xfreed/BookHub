@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (!Request.IsAuthenticated)
+{
+    Response.Redirect("Account/Login");
+}
+<span>Welcome @Html.Encode(User.Identity.Name) </span>

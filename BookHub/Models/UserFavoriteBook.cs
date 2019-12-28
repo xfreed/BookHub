@@ -12,7 +12,7 @@ namespace BookHub.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserFavoriteBooks
+    public partial class UserFavoriteBook
     {
         public int UserFavoriteBooksID { get; set; }
         public int UserID { get; set; }

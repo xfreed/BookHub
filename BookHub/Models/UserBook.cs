@@ -20,7 +20,7 @@ namespace BookHub.Models
         public int ReadStatusID { get; set; }
     
         public virtual Book Book { get; set; }
-        public virtual ReadStatus ReadStatus { get; set; }
+        public virtual ReadStatu ReadStatu { get; set; }
         public virtual User User { get; set; }
     }
 }

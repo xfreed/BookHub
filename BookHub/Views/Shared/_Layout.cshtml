@@ -13,8 +13,10 @@
     <div>
         <nav class="navbar navbar-default navigation-clean">
             <div class="container">
-                <a class="navbar-brand" href="#">BookHub</a>
-                <div class="navbar-header"><a href="#"><img src="~/Content/Images/logo.png" style="width: 40px;margin-top: 5px;" /></a></div>
+                <a class="navbar-brand" a href="@Url.Action("Index", "Home")">
+                    BookHub
+                   @* <div class="navbar-header"><a href="@Url.Action("Index", "Home")"><img src="~/Content/Images/logo.png" style="width: 40px;margin-top: 5px;" /></a></div>*@
+                </a>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li role="presentation"><a href="#"><i class="fas fa-chart-bar"></i>Популярне</a></li>
@@ -22,8 +24,14 @@
                     </ul>
                     <ul class="nav navbar-nav" style="float: right;">
                         <li role="presentation"><a href="#"><i class="fas fa-search" data-toggle="tooltip" data-placement="bottom" title="Пошука за назвою"></i></a></li>
-                        <li role="presentation"><a href="#"><i class="fas fa-sign-in-alt"></i></a></li>
-                        <li role="presentation"></li>
+
+                        @if (!Request.IsAuthenticated) { 
+                            <li role="presentation"><a href="@Url.Action("Index", "Account")"><i class="fas fa-sign-in-alt"></i></a></li>
+                        }
+                        else
+                        {
+
+                        }
                     </ul>
                 </div>
             </div>
