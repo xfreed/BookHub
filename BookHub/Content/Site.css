@@ -23,7 +23,12 @@ body {
 /* Manual edited*/
 
 /* Main page */
-
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: #fff !important;
+}
+.dropdown>a {
+    padding-top: 10px !important;
+}
 #logo,
 #logo * {
     height: 45px;
@@ -63,7 +68,7 @@ body {
     color: #fff;
     height: 300px;
     overflow: hidden;
-    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("Images/main/background.jpg");
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("../Content/img/main/background.jpg");
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -148,7 +153,7 @@ body {
     padding: 120px 0;
 }
 
-.login-clean form {
+    .login-clean form {
         max-width: 320px;
         width: 90%;
         margin: 0 auto;
@@ -157,7 +162,7 @@ body {
         border-radius: 4px;
         color: #505e6c;
         box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-}
+    }
 
     .login-clean .illustration {
         text-align: center;

@@ -72,7 +72,7 @@
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Icon" Type="varchar" MaxLength="255" />
+          <Property Name="Icon" Type="bit" Nullable="false" />
           <Property Name="IsEmailVerified" Type="bit" />
           <Property Name="ActivationCode" Type="uniqueidentifier" />
         </EntityType>
@@ -332,7 +332,7 @@
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Icon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Icon" Type="Boolean" Nullable="false" />
           <Property Name="IsEmailVerified" Type="Boolean" />
           <Property Name="ActivationCode" Type="Guid" />
           <NavigationProperty Name="UserBooks" Relationship="Self.FK_UserBook_User" FromRole="User" ToRole="UserBook" />

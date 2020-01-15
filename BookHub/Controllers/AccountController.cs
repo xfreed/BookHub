@@ -38,9 +38,7 @@ namespace BookHub.Controllers
                         //Save all details in RegitserUser object
                         Username = registerDetails.Username,
                         Email = registerDetails.Email,
-                        Password = registerDetails.Password,
-                        /// FIX
-                        UserID = 1
+                        Password = registerDetails.Password
                     };
 
                     try
@@ -48,6 +46,7 @@ namespace BookHub.Controllers
                         //Calling the SaveDetails method which saves the details.
                         databaseContext.Users.Add(reglog);
                         databaseContext.SaveChanges();
+                        IOWork.MkDir(databaseContext.Users.Where(user => user.Email == reglog.Email).FirstOrDefault().UserID.ToString());
                     }
                     catch (DbEntityValidationException e)
                     {
@@ -99,6 +98,7 @@ namespace BookHub.Controllers
                 //If user is valid & present in database, we are redirecting it to Welcome page.
                 if (isValidUser != null)
                 {
+                    //var folder = Server.MapPath("~/App_Data/uploads/random");
                     FormsAuthentication.SetAuthCookie(model.Email, false);
                     return RedirectToAction("Index");
                 }

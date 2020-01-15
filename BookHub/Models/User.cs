@@ -25,7 +25,7 @@ namespace BookHub.Models
         public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Icon { get; set; }
+        public bool Icon { get; set; }
         public Nullable<bool> IsEmailVerified { get; set; }
         public Nullable<System.Guid> ActivationCode { get; set; }
     
